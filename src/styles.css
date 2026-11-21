@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #070d1a;
+  --color-elevated: #0e1729;
+  --color-subtle: #152238;
+  --color-fg: #e7eefc;
+  --color-muted: #93a4c3;
+  --color-faint: #6d7f9e;
+  --color-line: #243454;
+  --color-accent: #3d8bfd;
+  --color-accent-fg: #061018;
+  --color-ok: #3dd6a5;
+  --color-warn: #e3b341;
+  --color-danger: #f07178;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 28px;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    overflow-x: clip;
+    background:
+      radial-gradient(900px 420px at 0% -10%, color-mix(in oklab, var(--color-accent) 8%, transparent), transparent 60%),
+      var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1, h2, h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+.nx-glow {
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--color-accent) 45%, transparent),
+    0 10px 28px color-mix(in oklab, var(--color-accent) 22%, transparent);
+}
+
+.nx-live {
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-ok) 28%, transparent);
+}
+
+.nx-press:active {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nx-pulse {
+    animation: none !important;
+  }
+}
